@@ -350,8 +350,11 @@ body {
   }
 
   @keyframes text-sliding {
+    0%{
+      left: 0px;
+    }
     0%, 20% {
-      left: 0%;
+      left: 0px;
       opacity: 0;
     }
     20%, 90% {
@@ -366,8 +369,11 @@ body {
   }
 
   @-webkit-keyframes text-sliding {
+    0%{
+      left: 0px;
+    }
     0%, 20% {
-      left: 0%;
+      left: 0px;
       opacity: 0;
     }
     20%, 90% {
@@ -382,14 +388,17 @@ body {
   }
 
   @-moz-keyframes text-sliding {
+    0%{
+      left: 0px;
+    }
     0%, 20% {
-      left: 0%;
+      left: 0px;
       opacity: 0;
     }
     20%, 90% {
       opacity: 1;
     }
-    90%, 100%{
+    99%, 100%{
       opacity: 0;
     }
     100% {
