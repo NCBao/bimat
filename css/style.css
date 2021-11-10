@@ -344,6 +344,9 @@ body {
     animation: text-sliding 7s linear infinite;
     -webkit-animation: text-sliding 7s linear infinite;
     -moz-animation: text-sliding 7s linear infinite;
+    animation-play-state: paused;
+    -webkit-animation-play-state: paused;
+    -moz-animation-play-state: paused;
   }
 
   @keyframes text-sliding {
