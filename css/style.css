@@ -315,6 +315,16 @@ body {
     padding: 5px 0 15px;
     white-space: pre;
   }
+  
+  #gift-2-button,
+  #gift-1-button,
+  #play-pause-control,
+  #next-control,
+  #prev-control,
+  #warning-right-button,
+  #warning-left-button {
+    cursor: pointer;
+  }
 
   .rotate {
     animation: rotation 5s linear infinite;
