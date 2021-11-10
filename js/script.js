@@ -20,77 +20,23 @@ var warningImg = document.getElementById('warning-img');
 //states and default
 warningCenterText.innerHTML = "Sẵn sàng đón nhận tấm chân tình\nto bự này chưa tình yêu ?";
 warningLeftButtonText.innerHTML = "Sẵn sàng !!";
+musicName.innerHTML = listMusic[musicState - 1];
 var appState = state.openApp;
 var musicState = 1;
 var musicIsPlay = false;
-musicName.innerHTML = listMusic[musicState - 1];
 //events
 warningLeftButton.onclick = function () {
     switch (appState) {
         case state.openApp: {
-            //backdrop
-            backdrop.classList.add('fade-out');
-            backdrop.classList.add('opacity-off');
-            //warning
-            warningContainer.classList.add('fade-out');
-            warningContainer.classList.add('opacity-off');
-            //display none
-            setTimeout(() => {
-                backdrop.classList.remove('fade-out');
-                backdrop.classList.remove('full-backdrop');
-                backdrop.classList.remove('display');
-                warningContainer.classList.remove('fade-out');
-                warningContainer.classList.remove('display');
-                backdrop.classList.remove('opacity-off');
-                warningContainer.classList.remove('opacity-off');
-                disk.classList.add('rotate');
-                musicBox.play();
-                musicIsPlay = true;
-                playPauseImg.setAttribute('src', './img/Pause_btn.png');
-                warningCenterText.innerHTML = 'Hộp này hông có quà đâu\nLÊU LÊU\nCó muốn chọn lại hông ta ?'
-                warningLeftButtonText.innerHTML = "Muốn";
-                warningRightButtonText.innerHTML = "Rất muốn";
-                warningRightButton.classList.add('display-flex');
-                warningRightButton.onclick = warningLeftButton.onclick;
-                appState = state.giftOne;
-                document.title = "Cục cưng sinh nhật vui vẻ !!!";
-            }, 600);
+            openApp();
             break;
         }
         case state.giftOne: {
-            backdrop.classList.add('fade-out');
-            backdrop.classList.add('opacity-off');
-            warningContainer.classList.add('fade-out');
-            warningContainer.classList.add('opacity-off');
-            setTimeout(() => {
-                backdrop.classList.remove('display');
-                warningContainer.classList.remove('display');
-                backdrop.classList.remove('fade-out');
-                warningContainer.classList.remove('fade-out');
-                backdrop.classList.remove('opacity-off');
-                warningContainer.classList.remove('opacity-off');
-                warningText.classList.remove('display');
-                warningImg.classList.add('display');
-                warningRightButton.classList.remove('display-flex');
-                warningRightButton.onclick = null;
-                warningLeftButtonText.innerHTML = "Em biết rồi !!!";
-            }, 600);
-            appState = state.giftTwo;
+            openGiftOne();
             break;
         }
         case state.giftTwo: {
-            backdrop.classList.add('fade-out');
-            backdrop.classList.add('opacity-off');
-            warningContainer.classList.add('fade-out');
-            warningContainer.classList.add('opacity-off');
-            setTimeout(() => {
-                backdrop.classList.remove('display');
-                warningContainer.classList.remove('display');
-                backdrop.classList.remove('fade-out');
-                warningContainer.classList.remove('fade-out');
-                backdrop.classList.remove('opacity-off');
-                warningContainer.classList.remove('opacity-off');
-            }, 600);
+            openGiftTwo();
             break;
         }
         default: break;
@@ -189,6 +135,12 @@ prevControl.onclick = function () {
     setTimeout(() => {
         musicName.classList.add('text-sliding');
     }, 500);
+    if (!musicIsPlay) {
+        musicBox.play();
+        playPauseImg.setAttribute('src', './img/Pause_btn.png');
+        disk.classList.add('rotate');
+        musicIsPlay = !musicIsPlay;
+    }
 }
 
 nextControl.onclick = function () {
@@ -205,6 +157,12 @@ nextControl.onclick = function () {
     setTimeout(() => {
         musicName.classList.add('text-sliding');
     }, 500);
+    if (!musicIsPlay) {
+        musicBox.play();
+        playPauseImg.setAttribute('src', './img/Pause_btn.png');
+        disk.classList.add('rotate');
+        musicIsPlay = !musicIsPlay;
+    }
 }
 
 playPauseControl.onclick = function () {
@@ -222,7 +180,72 @@ playPauseControl.onclick = function () {
     }
 }
 
-musicBox.onended = function(){
+musicBox.onended = function () {
     nextControl.click();
 }
 
+function openApp() {
+    //backdrop
+    backdrop.classList.add('fade-out');
+    backdrop.classList.add('opacity-off');
+    //warning
+    warningContainer.classList.add('fade-out');
+    warningContainer.classList.add('opacity-off');
+    //display none
+    setTimeout(() => {
+        backdrop.classList.remove('fade-out');
+        backdrop.classList.remove('full-backdrop');
+        backdrop.classList.remove('display');
+        warningContainer.classList.remove('fade-out');
+        warningContainer.classList.remove('display');
+        backdrop.classList.remove('opacity-off');
+        warningContainer.classList.remove('opacity-off');
+        disk.classList.add('rotate');
+        musicBox.play();
+        musicIsPlay = true;
+        playPauseImg.setAttribute('src', './img/Pause_btn.png');
+        warningCenterText.innerHTML = 'Hộp này hông có quà đâu\nLÊU LÊU\nCó muốn chọn lại hông ta ?'
+        warningLeftButtonText.innerHTML = "Muốn";
+        warningRightButtonText.innerHTML = "Rất muốn";
+        warningRightButton.classList.add('display-flex');
+        warningRightButton.onclick = warningLeftButton.onclick;
+        appState = state.giftOne;
+        document.title = "Cục cưng sinh nhật vui vẻ !!!";
+    }, 600);
+}
+
+function openGiftOne() {
+    backdrop.classList.add('fade-out');
+    backdrop.classList.add('opacity-off');
+    warningContainer.classList.add('fade-out');
+    warningContainer.classList.add('opacity-off');
+    setTimeout(() => {
+        backdrop.classList.remove('display');
+        warningContainer.classList.remove('display');
+        backdrop.classList.remove('fade-out');
+        warningContainer.classList.remove('fade-out');
+        backdrop.classList.remove('opacity-off');
+        warningContainer.classList.remove('opacity-off');
+        warningText.classList.remove('display');
+        warningImg.classList.add('display');
+        warningRightButton.classList.remove('display-flex');
+        warningRightButton.onclick = null;
+        warningLeftButtonText.innerHTML = "Em biết rồi !!!";
+    }, 600);
+    appState = state.giftTwo;
+}
+
+function openGiftTwo() {
+    backdrop.classList.add('fade-out');
+    backdrop.classList.add('opacity-off');
+    warningContainer.classList.add('fade-out');
+    warningContainer.classList.add('opacity-off');
+    setTimeout(() => {
+        backdrop.classList.remove('display');
+        warningContainer.classList.remove('display');
+        backdrop.classList.remove('fade-out');
+        warningContainer.classList.remove('fade-out');
+        backdrop.classList.remove('opacity-off');
+        warningContainer.classList.remove('opacity-off');
+    }, 600);
+}

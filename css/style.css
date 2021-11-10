@@ -25,6 +25,24 @@ body {
   width: 100%;
 }
 
+/* PC and Tablet */
+@media only screen and (min-width: 46.1875em) {
+  #container {
+    display: none;
+  }
+
+  #backdrop p {
+    text-align: center;
+    font-size: 35px;
+    z-index: 51;
+    font-weight: bold;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    width: 100%;
+  }
+}
 /* mobile */
 @media only screen and (max-width: 46.1875em) {
   #container {
@@ -63,20 +81,18 @@ body {
   }
 
   .disk-container {
-    width: 10%;
-    padding-left: 10px;
+    max-width: fit-content;
   }
 
   .disk-img {
     width: 32px;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 10px;
   }
 
   .music-name_container {
-    width: 52%;
-    margin: 0 10px;
+    width: 100%;
+    /* margin: 0 10px; */
     overflow: hidden;
   }
 
@@ -85,17 +101,16 @@ body {
     font-weight: bold;
     font-size: var(--font-size);
     white-space: nowrap;
-    transform: translateX(0%);
-    -webkit-transform: translateX(0%);
-    -moz-transform: translateX(0%);
+    position: relative;
+    /* left: 0; */
   }
 
   .music-control_container {
-    width: 38%;
-    margin-right: 10px;
+    width: 111px;
+    margin: 0 10px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-end;
   }
 
   .music-control {
@@ -215,7 +230,7 @@ body {
     display: none;
   }
 
-  .full-backdrop{
+  .full-backdrop {
     background-color: rgba(0, 0, 0, 1) !important;
   }
 
@@ -233,7 +248,7 @@ body {
     display: none;
   }
 
-  .warning-content-container{
+  .warning-content-container {
     margin: 20px 0 15px;
   }
 
@@ -289,145 +304,180 @@ body {
     padding: 0 10px;
   }
 
-  .warning-with-img, .warning-with-text{
+  .warning-with-img,
+  .warning-with-text {
     display: none;
   }
 
-  .warning-content-center p{
+  .warning-content-center p {
     text-align: center;
     margin: auto;
     padding: 5px 0 15px;
     white-space: pre;
   }
 
-  .rotate{
+  .rotate {
     animation: rotation 5s linear infinite;
     -webkit-animation: rotation 5s linear infinite;
     -moz-animation: rotation 5s linear infinite;
   }
 
   @keyframes rotation {
-    100%{
+    100% {
       transform: rotate(360deg);
     }
   }
 
   @-webkit-keyframes rotation {
-    100%{
+    100% {
       -webkit-transform: rotate(360deg);
     }
   }
 
   @-moz-keyframes rotation {
-    100%{
+    100% {
       -moz-transform: rotate(360deg);
     }
   }
 
   .text-sliding {
-    animation: text-sliding 8s linear 2s infinite;
-    -webkit-animation: text-sliding 8s linear 2s infinite;
-    -moz-animation: text-sliding 8s linear 2s infinite;
+    animation: text-sliding 7s linear infinite;
+    -webkit-animation: text-sliding 7s linear infinite;
+    -moz-animation: text-sliding 7s linear infinite;
   }
 
   @keyframes text-sliding {
+    0%, 20% {
+      left: 0%;
+      opacity: 0;
+    }
+    20%, 90% {
+      opacity: 1;
+    }
+    99%, 100%{
+      opacity: 0;
+    }
     100% {
-      transform: translateX(-100%);
+      left: -250px;
     }
   }
 
   @-webkit-keyframes text-sliding {
+    0%, 20% {
+      left: 0%;
+      opacity: 0;
+    }
+    20%, 90% {
+      opacity: 1;
+    }
+    99%, 100%{
+      opacity: 0;
+    }
     100% {
-      -webkit-transform: translateX(-100%);
+      left: -250px;
     }
   }
 
   @-moz-keyframes text-sliding {
+    0%, 20% {
+      left: 0%;
+      opacity: 0;
+    }
+    20%, 90% {
+      opacity: 1;
+    }
+    90%, 100%{
+      opacity: 0;
+    }
     100% {
-      -moz-transform: translateX(-100%);
+      left: -250px;
     }
   }
 
-  @keyframes fade-in{
+  @keyframes fade-in {
     from {
       opacity: 0;
     }
-    to{
+    to {
       opacity: 1;
     }
   }
 
-  @-webkit-keyframes fade-in{
+  @-webkit-keyframes fade-in {
     from {
       opacity: 0;
     }
-    to{
+    to {
       opacity: 1;
     }
   }
 
-  @-moz-keyframes fade-in{
+  @-moz-keyframes fade-in {
     from {
       opacity: 0;
     }
-    to{
+    to {
       opacity: 1;
     }
   }
 
-  @keyframes fade-out{
+  @keyframes fade-out {
     from {
       opacity: 1;
     }
-    to{
+    to {
       opacity: 0;
     }
   }
 
-  @-webkit-keyframes fade-out{
+  @-webkit-keyframes fade-out {
     from {
       opacity: 1;
     }
-    to{
+    to {
       opacity: 0;
     }
   }
 
-  @-moz-keyframes fade-out{
+  @-moz-keyframes fade-out {
     from {
       opacity: 1;
     }
-    to{
+    to {
       opacity: 0;
     }
   }
 
-  .fade-in{
-    animation: fade-in 0.5s linear;
-    -webkit-animation: fade-in 0.5s linear;
-    -moz-animation: fade-in 0.5s linear;
+  .fade-in {
+    animation: fade-in 0.3s linear;
+    -webkit-animation: fade-in 0.3s linear;
+    -moz-animation: fade-in 0.3s linear;
   }
 
-  .fade-out{
-    animation: fade-out 0.5s linear;
-    -webkit-animation: fade-out 0.5s linear;
-    -moz-animation: fade-out 0.5s linear;
+  .fade-out {
+    animation: fade-out 0.3s linear;
+    -webkit-animation: fade-out 0.3s linear;
+    -moz-animation: fade-out 0.3s linear;
   }
 
   .display {
     display: block;
   }
 
-  .display-flex{
+  .display-flex {
     display: flex;
   }
 
-  .opacity-on{
+  .opacity-on {
     opacity: 1;
   }
 
-  .opacity-off{
+  .opacity-off {
     opacity: 0;
+  }
+
+  #backdrop p {
+    display: none;
   }
 }
 
