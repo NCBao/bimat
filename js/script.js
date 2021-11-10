@@ -192,7 +192,7 @@ function openApp() {
     warningContainer.classList.add('fade-out');
     warningContainer.classList.add('opacity-off');
     //music name sliding
-    musicName.classList.add("text-sliding");
+    musicName.style.animationPlayState = "running";
     //display none
     setTimeout(() => {
         backdrop.classList.remove('fade-out');
