@@ -20,10 +20,10 @@ var warningImg = document.getElementById('warning-img');
 //states and default
 warningCenterText.innerHTML = "Sẵn sàng đón nhận tấm chân tình\nto bự này chưa tình yêu ?";
 warningLeftButtonText.innerHTML = "Sẵn sàng !!";
-musicName.innerHTML = listMusic[musicState - 1];
 var appState = state.openApp;
 var musicState = 1;
 var musicIsPlay = false;
+musicName.innerHTML = listMusic[musicState - 1];
 //events
 warningLeftButton.onclick = function () {
     switch (appState) {
@@ -191,6 +191,8 @@ function openApp() {
     //warning
     warningContainer.classList.add('fade-out');
     warningContainer.classList.add('opacity-off');
+    //music name sliding
+    musicName.classList.add("text-sliding");
     //display none
     setTimeout(() => {
         backdrop.classList.remove('fade-out');
